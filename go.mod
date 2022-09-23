@@ -1,4 +1,4 @@
-module github.com/google/certtostore
+module github.com/petrosfff/certtostore
 
 go 1.17
 
