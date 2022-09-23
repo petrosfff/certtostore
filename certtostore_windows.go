@@ -1458,7 +1458,7 @@ func copyFile(from, to string) error {
 // https://docs.microsoft.com/en-us/windows/win32/api/ncrypt/nf-ncrypt-ncryptfinalizekey.
 func softwareKeyContainers(uniqueID string) (string, string, error) {
 	var cngRoot = os.Getenv("ProgramData") + `\Microsoft\Crypto\Keys\`
-	var capiRoot = os.Getenv("ProgramData") + `\Microsoft\Crypto\RSA\MachineKeys\`
+	var capiRoot = fmt.Sprintf(`%s\Microsoft\Crypto\RSA\%s\`, os.Getenv("AppData"), UserSID())
 
 	// Determine the key type, so that we know which container we are
 	// working with.
