@@ -1458,6 +1458,7 @@ func copyFile(from, to string) error {
 // https://docs.microsoft.com/en-us/windows/win32/api/ncrypt/nf-ncrypt-ncryptfinalizekey.
 func softwareKeyContainers(uniqueID string) (string, string, error) {
 	var cngRoot = os.Getenv("ProgramData") + `\Microsoft\Crypto\Keys\`
+	var err error
 	userSid, err := UserSID()
 	if err != nil {
 		return "", "", fmt.Errorf("error getting user SID: %v", err)
@@ -1476,7 +1477,7 @@ func softwareKeyContainers(uniqueID string) (string, string, error) {
 
 	// Generate the container path for the keyType we already have,
 	// and lookup the container path for the keyType we need to infer.
-	var err error
+
 	switch keyType {
 	case "CNG":
 		cng = cngRoot + uniqueID
