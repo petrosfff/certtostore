@@ -407,9 +407,6 @@ func (w *WinCertStore) cert(issuers []string, searchRoot *uint16, store uint32) 
 			continue
 		}
 		prev = nc
-		if (intendedKeyUsage(encodingX509ASN, nc) & signatureKeyUsage) == 0 {
-			continue
-		}
 
 		// Extract the DER-encoded certificate from the cert context.
 		xc, err := certContextToX509(nc)
