@@ -814,7 +814,7 @@ func signRSA(kh uintptr, digest []byte, algID *uint16) ([]byte, error) {
 		uintptr(size),
 		uintptr(unsafe.Pointer(&size)),
 		bCryptPadPKCS1)
-	if r == 0 {
+	if r != 0 {
 		return nil, fmt.Errorf("NCryptSignHash returned %X during signing: %v", r, err)
 	}
 
