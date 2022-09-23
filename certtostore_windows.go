@@ -1121,7 +1121,7 @@ func keyMetadata(kh uintptr, store *WinCertStore) (*Key, error) {
 	defer freeObject(ph)
 
 	// get the provider implementation from the provider handle
-	impl, err := getPropertyInt(ph, nCryptImplTypeProperty)
+	_, err = getPropertyInt(ph, nCryptImplTypeProperty)
 	if err != nil {
 		return nil, fmt.Errorf("unable to determine provider implementation: %v", err)
 	}
