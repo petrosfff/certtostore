@@ -344,7 +344,7 @@ func (w *WinCertStore) resolveChains(cert *windows.CertContext) error {
 		if err != nil {
 			return fmt.Errorf("extractSimpleChain: %v", err)
 		}
-		w.certChains = append(certChains, x509Certs)
+		w.certChains = append(w.certChains, x509Certs)
 	}
 	return nil
 }
